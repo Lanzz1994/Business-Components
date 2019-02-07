@@ -1,5 +1,4 @@
-﻿/// <reference path="unit.js" />
-//扩展 Object对象，和Jquery $.extend 一样，没有依赖Jquery时可以使用
+﻿//扩展 Object对象，和Jquery $.extend 一样，没有依赖Jquery时可以使用
 function extendObj(dest, src, merge) {
     for (var key in src) {
         if (!src.hasOwnProperty(key) || dest[key] !== undefined && merge) {

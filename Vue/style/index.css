@@ -1,0 +1,270 @@
+/*通用样式*/
+.map-ctrl-box {
+	position: fixed;
+	z-index: 500;
+}
+
+.animate {
+	transition: All 0.493s ease;
+	-webkit-transition: All 0.493s ease;
+	-moz-transition: All 0.493s ease;
+	-o-transition: All 0.493s ease;
+}
+
+.animate-fast {
+	transition: All 0.293s ease;
+	-webkit-transition: All 0.293s ease;
+	-moz-transition: All 0.293s ease;
+	-o-transition: All 0.293s ease;
+}
+
+
+/*Vue的 transition组件 用到的样式*/
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .493s;
+}
+
+.fade-enter, .fade-leave-to {
+	opacity: 0;
+}
+
+/*========= 地图自动伸缩容器 ========*/
+.affix-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: default;
+}
+	/*标题和内容的排版，left,right,top,bottom*/
+	.affix-card.left {
+		flex-direction: row;
+	}
+
+	.affix-card.right {
+		flex-direction: row-reverse;
+	}
+
+	.affix-card.bottom {
+		flex-direction: column-reverse;
+	}
+
+	.affix-card .el-card__header {
+		border-bottom: none;
+	}
+
+	/*分割标题和内容的线条 right,left,top,bottom*/
+	/*.affix-card.affix-active .el-card__header {
+				border-bottom: 1px solid #ebeef5;
+			}
+			.affix-card.left.affix-active .el-card__header {
+				border-right: 1px solid #ebeef5;
+				border-bottom:none;
+			}
+			.affix-card.right.affix-active .el-card__header {
+				border-left: 1px solid #ebeef5;
+				border-bottom:none;
+			}
+			.affix-card.bottom.affix-active .el-card__header {
+				border-top: 1px solid #ebeef5;
+				border-bottom:none;
+			}*/
+
+	.affix-card.left .el-card__header, .affix-card.right .el-card__header {
+		text-align: center;
+		writing-mode: vertical-lr;
+	}
+
+	/*应用 .el-card__body的元素是执行动画的容器，而该元素只在Vue渲染后才出现，不能在直接在html书写*/
+	.affix-card .el-card__body {
+		transition: All 0.293s ease;
+		-webkit-transition: All 0.293s ease;
+		-moz-transition: All 0.293s ease;
+		-o-transition: All 0.293s ease;
+		padding: 0;
+	}
+	/*标题箭头*/
+	/*上*/
+	.affix-card .header-text .el-icon-d-arrow-right {
+		transform: rotate(-90deg);
+	}
+
+		.affix-card .header-text .el-icon-d-arrow-right.reserve {
+			transform: rotate(90deg);
+		}
+
+	/*下*/
+	.affix-card.bottom .header-text .el-icon-d-arrow-right {
+		transform: rotate(90deg);
+	}
+
+		.affix-card.bottom .header-text .el-icon-d-arrow-right.reserve {
+			transform: rotate(-90deg);
+		}
+
+	/*左*/
+	.affix-card.left .header-text .el-icon-d-arrow-right {
+		transform: rotate(180deg);
+	}
+
+		.affix-card.left .header-text .el-icon-d-arrow-right.reserve {
+			transform: rotate(0);
+		}
+
+	/*右*/
+	.affix-card.right .header-text .el-icon-d-arrow-right {
+		transform: rotate(0deg);
+	}
+
+		.affix-card.right .header-text .el-icon-d-arrow-right.reserve {
+			transform: rotate(180deg);
+		}
+
+
+
+/*============ 顶部导航条 ===========*/
+.lz-nav {
+	width: 100%;
+	height: 40px;
+	background: linear-gradient(#FEFEFE,#EDEDED); /*渐变背景色*/
+	/*background-color:#F3F3F3;*/
+	box-shadow: 0 0 1px #808080; /*底部阴影*/
+	/*垂直居中*/
+	display: flex;
+	align-items: center;
+}
+
+/*========== 自定义布局的下拉框 ============*/
+.dynamic-select-header > .title {
+	cursor: pointer;
+	font-size: 13px;
+}
+
+/*=============== 弹框 =================*/
+.lz-popup.el-card {
+	transition: unset;
+}
+
+.lz-popup .el-card__header {
+	cursor: move;
+}
+
+.lz-popup .el-card__body {
+	padding: 0;
+}
+
+/*=========== 列表容器 ==========*/
+.lz-listbox {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.lz-list-menu {
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-right: solid 1px #e6e6e6;
+	position: relative;
+	height: auto;
+}
+/*list-content 的宽度自适应*/
+.lz-list-content {
+	flex-grow: 1;
+}
+/*right：右左排版*/
+.lz-listbox.right .lz-list-menu {
+	order: 1;
+	border-right: none;
+	border-left: solid 1px #e6e6e6;
+}
+
+.lz-list-menu .el-menu-item, .el-submenu__title {
+	height: 30px;
+	line-height: 30px;
+}
+
+.lz-list-menu .el-menu {
+	border-right: none;
+}
+
+/*隐藏列表按钮*/
+.lz-list-menu-hide {
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	background-color: #ededed;
+	border-top: 1px solid #ddd;
+	position: absolute;
+	bottom: 0;
+	height: 20px;
+}
+
+	.lz-list-menu-hide.middle {
+		top: 0;
+		margin: auto;
+		left: 100%;
+		width: 20px;
+		height: 50px;
+		line-height: 50px;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+
+	.lz-list-menu-hide.hidden {
+		width: 30px;
+		bottom: 0;
+		border-right: 1px solid #ddd;
+	}
+
+	.lz-list-menu-hide.middle.hidden {
+		width: 20px;
+	}
+
+	.lz-list-menu-hide.hidden.left {
+		right: -30px;
+	}
+
+	.lz-list-menu-hide.hidden.right {
+		left: -30px;
+	}
+
+	.lz-list-menu-hide.middle.hidden.left {
+		right: -20px;
+	}
+
+	.lz-list-menu-hide.middle.hidden.left {
+		right: -20px;
+	}
+
+.lz-list-menu-hide {
+	z-index: 99;
+	opacity: 0;
+}
+
+.lz-listbox:hover .lz-list-menu-hide {
+	opacity: 1;
+}
+
+.hidden .menu-arrow {
+	transform: rotate(180deg);
+}
+
+/*========= 轮播新增功能 ===========*/
+/*序号指示*/
+.carousel-serial {
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	text-align: center;
+	z-index: 99;
+}
+
+
+.iconfont{
+	font-size: 16px;
+}
+
